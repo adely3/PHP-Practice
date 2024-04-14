@@ -9,6 +9,6 @@
 </div>
 
 <?php
-    echo "こんにちは<br>";
-    echo "こんばんは";
+echo "こんにちは<br>";
+echo "こんばんは";
 ?>

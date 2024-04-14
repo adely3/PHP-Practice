@@ -83,53 +83,57 @@ function calcTax($i)
 
 try {
     //tryの中で発生した例外はキャッチされる（捕まる）
-    echo calcTax("あ").","; //例外発生 catchへ飛ばされる
-    echo calcTax(1).","; //この行は実行されない
+    echo calcTax("あ") . ","; //例外発生 catchへ飛ばされる
+    echo calcTax(1) . ","; //この行は実行されない
 } catch (Exception $e) { //例外は$eとしてここにくる
-    echo $e->getMessage().","; //エラーメッセージ表示
-    echo $e->getTraceAsString().","; //どこでエラーが発生したか表示
+    echo $e->getMessage() . ","; //エラーメッセージ表示
+    echo $e->getTraceAsString() . ","; //どこでエラーが発生したか表示
 }
 
-echo calcTax(2).","; //この行は実効される
+echo calcTax(2) . ","; //この行は実効される
 
-class Animal{//クラス　要復習
-    public $name;//クラスの外から読み書きできる privateで定義するとクラスの外からは読み書きできない
+class Animal
+{ //クラス　要復習
+    public $name; //クラスの外から読み書きできる privateで定義するとクラスの外からは読み書きできない
     public $weight;
 
     public function __construct($name, $weight)
     {
-        $this->name = $name;//thisは「このクラス」という意味
+        $this->name = $name; //thisは「このクラス」という意味
         $this->weight = $weight;
     }
 
     public function eat($food)
     {
         $this->weight += 1;
-        echo "体重:{$this->weight}kg".",";
-    }
-
-
-}
-
-Class Cat extends Animal{//継承
-    public function cry(){
-            echo "私は{$this->name}だにゃん!".",";
+        echo "体重:{$this->weight}kg" . ",";
     }
 }
 
-Class Dog extends Animal{
-    public function eat($food){
-        $this->weight +=2;//オーバーライド（上書き） 継承したeat関数
-        echo "体重:{$this->weight}kg".",";
+class Cat extends Animal
+{ //継承
+    public function cry()
+    {
+        echo "私は{$this->name}だにゃん!" . ",";
     }
-    public function cry(){
-            echo "私は{$this->name}だわん!".",";
+}
+
+class Dog extends Animal
+{
+    public function eat($food)
+    {
+        $this->weight += 2; //オーバーライド（上書き） 継承したeat関数
+        echo "体重:{$this->weight}kg" . ",";
+    }
+    public function cry()
+    {
+        echo "私は{$this->name}だわん!" . ",";
     }
 }
 
 
 
-$cat1 = new Cat("一郎", 5);//インスタンス
+$cat1 = new Cat("一郎", 5); //インスタンス
 $cat2 = new Cat("二郎", 3);
 
 $cat1->eat("fish");
@@ -139,20 +143,24 @@ $cat1->eat("fish");
 $cat1->cry();
 $cat2->cry();
 
-class Lion{
-    const NAME="ペロ";//定数　大文字で定義
+class Lion
+{
+    const NAME = "ペロ"; //定数　大文字で定義
 
-    public function LegCount(){
-        return self::NAME;//クラスの中から定数を参照するときはself::定数名で参照
+    public function LegCount()
+    {
+        return self::NAME; //クラスの中から定数を参照するときはself::定数名で参照
     }
 }
 
-echo Lion::NAME.",";//定数はクラスの外から参照可能
+echo Lion::NAME . ","; //定数はクラスの外から参照可能
 
-class Bird{//Staticメソッド　属性を使用しないメソッド　メンバ変数を使わない⇨どのインスタンスで使っても変化がない
-    public static function cry($food){
+class Bird
+{ //Staticメソッド　属性を使用しないメソッド　メンバ変数を使わない⇨どのインスタンスで使っても変化がない
+    public static function cry($food)
+    {
         return "私は{$food}が好きだピヨ";
     }
 }
 
-echo Bird::cry("とうもろこし").",";//呼び出すときはこの書き方
+echo Bird::cry("とうもろこし") . ",";//呼び出すときはこの書き方
