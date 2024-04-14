@@ -83,14 +83,14 @@ function calcTax($i)
 
 try {
     //tryの中で発生した例外はキャッチされる（捕まる）
-    echo calcTax("あ"); //例外発生 catchへ飛ばされる
-    echo calcTax(1); //この行は実行されない
+    echo calcTax("あ").","; //例外発生 catchへ飛ばされる
+    echo calcTax(1).","; //この行は実行されない
 } catch (Exception $e) { //例外は$eとしてここにくる
-    echo $e->getMessage(); //エラーメッセージ表示
-    echo $e->getTraceAsString(); //どこでエラーが発生したか表示
+    echo $e->getMessage().","; //エラーメッセージ表示
+    echo $e->getTraceAsString().","; //どこでエラーが発生したか表示
 }
 
-echo calcTax(2); //この行は実効される
+echo calcTax(2).","; //この行は実効される
 
 class Animal{//クラス　要復習
     public $name;//クラスの外から読み書きできる privateで定義するとクラスの外からは読み書きできない
@@ -105,7 +105,7 @@ class Animal{//クラス　要復習
     public function eat($food)
     {
         $this->weight += 1;
-        echo "体重:{$this->weight}kg";
+        echo "体重:{$this->weight}kg".",";
     }
 
 
@@ -113,17 +113,17 @@ class Animal{//クラス　要復習
 
 Class Cat extends Animal{//継承
     public function cry(){
-            echo "私は{$this->name}だにゃん!";
+            echo "私は{$this->name}だにゃん!".",";
     }
 }
 
 Class Dog extends Animal{
     public function eat($food){
         $this->weight +=2;//オーバーライド（上書き） 継承したeat関数
-        echo "体重:{$this->weight}kg";
+        echo "体重:{$this->weight}kg".",";
     }
     public function cry(){
-            echo "私は{$this->name}だわん!";
+            echo "私は{$this->name}だわん!".",";
     }
 }
 
@@ -147,7 +147,7 @@ class Lion{
     }
 }
 
-echo Lion::NAME;//定数はクラスの外から参照可能
+echo Lion::NAME.",";//定数はクラスの外から参照可能
 
 class Bird{//Staticメソッド　属性を使用しないメソッド　メンバ変数を使わない⇨どのインスタンスで使っても変化がない
     public static function cry($food){
@@ -155,4 +155,4 @@ class Bird{//Staticメソッド　属性を使用しないメソッド　メン�
     }
 }
 
-echo Bird::cry("とうもろこし");//呼び出すときはこの書き方
+echo Bird::cry("とうもろこし").",";//呼び出すときはこの書き方
